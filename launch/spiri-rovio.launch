@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+  <remap from="/cam0/image_raw" to="/stereo/left/image_mono_throttle"/>
+  <remap from="/imu0" to="/mavros/imu/data"/>
+  <remap from="/rovio/pose_with_covariance_stamped" to="/mavros/vision_pose/pose_cov"/>
+  <remap from="/rovio/odometry" to="/mavros/odometry/odom" />
+  <node pkg="rovio" type="rovio_node" name="rovio" output="screen">
+  <param name="filter_config" value="$(find rovio)/cfg/rovio-spiri.info"/>
+  <param name="camera0_config" value="$(find rovio)/cfg/spiri-left-cam.yaml"/>
+  </node>
+</launch>
